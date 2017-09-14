@@ -1,3 +1,3 @@
 # Laurus
 
-![laurus.jpg]()
+![](laurus.jpg)
