@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Laurus Latin morphology analyser</title>
+        <meta name="description" content="Laurus is a finite-state morphology for Latin">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <div class="wrapper">
+          <div class="header">
+            <img src="i/logo.jpg" alt="Laurus logo" width="64">
+
+            <h1>Laurus</h1>
+          </div>
+
+          <div id="app" class="contents">
+            <p>
+              Laurus is a finite-state morphological analyser for Latin. To test, enter a Latin word form below, e.g. <em>puellae</em>, and press the button.
+            </p>
+            <p>
+              <input v-model="form" v-on:keyup.enter="lookup">
+              <button v-on:click="lookup">Analyse</button>
+              <ul>
+                <li v-for="r in formattedResponse">
+                  <em>{{ r.lemma }}</em>, {{ r.pos }}<span v-if="r.features.length > 0">, </span><tt>{{ r.features.join(', ') }}</tt>
+                </li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="footer">
+            <p>
+              Laurus was written by <a href="http://johndal.com">Marius L. Jøhndal</a>.
+              The Laurus logo is derived from <a href="http://lauraceae.myspecies.info/category/lauraceae-taxonomy/lauraceae/ocotea/ocotea-quixos/laurus-quixos">image</a> by Jens G. Rohwer licensed under <a href="http://creativecommons.org/licences/by-nc/3.0/">CC-BY</a>.
+            </p>
+          </div>
+        </div>
+
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <!-- script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script -->
+    </body>
+</html>
